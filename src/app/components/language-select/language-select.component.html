@@ -1,0 +1,5 @@
+<mat-button-toggle-group (valueChange)="selectLanguage($event)" [(value)]="currentLang">
+  <mat-button-toggle *ngFor="let lang of languages" [value]="lang.code">
+      <span>{{lang.code | titlecase}}</span>
+  </mat-button-toggle>
+</mat-button-toggle-group>

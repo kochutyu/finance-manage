@@ -1,16 +1,34 @@
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
+import {TranslateLoader} from "@ngx-translate/core";
+import {HttpClient} from "@angular/common/http";
+import {createTranslateLoader} from "../app/app.module";
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyAmSoBTNVBoIwrLMX1LBIgKlljS98BvLp0",
+    authDomain: "finance-manage-56b7f.firebaseapp.com",
+    projectId: "finance-manage-56b7f",
+    storageBucket: "finance-manage-56b7f.appspot.com",
+    messagingSenderId: "157886390525",
+    appId: "1:157886390525:web:d0e20ea04daf373328de94"
+  },
+  languages: [
+    {
+      code: 'en',
+      name: 'english',
+      iconUrl: 'http://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg'
+    }, {
+      code: 'ua',
+      name: 'ukraine',
+      iconUrl: 'http://purecatamphetamine.github.io/country-flag-icons/3x2/UA.svg'
+    }
+  ],
+  translate: {
+    defaultLanguage: 'en',
+    loader: {
+      provide: TranslateLoader,
+      useFactory: (createTranslateLoader),
+      deps: [HttpClient]
+    }
+  }
 };
-
-/*
- * For easier debugging in development mode, you can import the following file
- * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
- *
- * This import should be commented out in production mode because it will have a negative impact
- * on performance if an error is thrown.
- */
-// import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
