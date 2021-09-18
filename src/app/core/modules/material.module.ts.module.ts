@@ -5,6 +5,13 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatSelectModule} from "@angular/material/select";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatInputModule} from "@angular/material/input";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {MatTabsModule} from "@angular/material/tabs";
+import {MatDividerModule} from "@angular/material/divider";
+import {MatCardModule} from "@angular/material/card";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 const modules = [
   MatToolbarModule,
@@ -12,7 +19,15 @@ const modules = [
   MatButtonModule,
   MatSelectModule,
   MatFormFieldModule,
-  MatButtonToggleModule
+  MatButtonToggleModule,
+  MatGridListModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatProgressSpinnerModule,
+  MatTabsModule,
+  MatDividerModule,
+  MatCardModule,
+  MatSnackBarModule
 ];
 
 @NgModule({

@@ -1,0 +1,29 @@
+<main class="content">
+
+  <mat-card class="base-mt">
+    <mat-card-title>
+      {{'topUpYourAccount' | translate}}
+    </mat-card-title>
+
+    <form class="form form-balance" (ngSubmit)="createBalance()" [formGroup]="createBalanceForm">
+      <mat-form-field appearance="fill">
+        <mat-label>{{'amount' | translate}}</mat-label>
+        <input formControlName="amount" matInput>
+      </mat-form-field>
+      <button type="submit" mat-raised-button color="primary">
+        {{'submit' | translate}}
+      </button>
+    </form>
+
+  </mat-card>
+
+  <mat-divider></mat-divider>
+
+  <mat-card class="base-mt">
+    <mat-card-title>
+      {{'makeATransaction' | translate}}
+    </mat-card-title>
+    <app-in-progress></app-in-progress>
+  </mat-card>
+
+</main>

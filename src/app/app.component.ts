@@ -1,9 +1,11 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
 import {HttpService} from "./core/services/http.service";
 import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {AuthService} from "./core/services/auth.service";
 import {TranslateService} from "@ngx-translate/core";
 import {environment} from "../environments/environment";
+import {LoaderService} from "./core/services/loader.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -11,55 +13,28 @@ import {environment} from "../environments/environment";
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
   languages = environment.languages;
+  isShow = true;
 
   constructor(
+    public loaderService: LoaderService,
     private httpService: HttpService,
     private angularFireAuth: AngularFireAuth,
-    private authService: AuthService,
-    public translateService: TranslateService
+    public authService: AuthService,
+    public translateService: TranslateService,
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ) {
-    // this.httpService.add('user/data', {ad: 'a123'}).subscribe(res => {
-    //
-    //   console.log(res)
-    // });
-    // this.angularFireAuth.signInWithEmailAndPassword('kochutyura@gmail.com', '18Kochut').then(m => {
-    //   console.log(m)
-    // })
-    // this.GoogleAuth().then(res => {
-    //   console.log(res)
-    // })
-    // const auth = getAuth();
-    // createUserWithEmailAndPassword(auth, 'kochutyura@gmail.com', '18Kochut')
-    //   .then((userCredential) => {
-    //     // Signed in
-    //     const user = userCredential.user;
-    //     // ...
-    //   })
-    //   .catch((error) => {
-    //     const errorCode = error.code;
-    //     const errorMessage = error.message;
-    //     // ..
-    //   });
+    this.loaderService.detect$().subscribe(isShow => {
+      this.isShow = isShow;
+      this.cdr.markForCheck();
+    });
+    this.router.navigateByUrl('/dashboard');
   }
 
-  // GoogleAuth() {
-  //   return this.socialLogin(new auth.GoogleAuthProvider());
-  // }
-  //
-  // // Auth logic to run auth providers
-  // socialLogin(provider: auth.AuthProvider) {
-  //   return this.angularFireAuth.signInWithPopup(provider)
-  //     .then((result) => {
-  //       console.log('You have been successfully logged in!')
-  //     }).catch((error) => {
-  //       console.log(error)
-  //     })
-  // }
-
   signIn() {
-    this.authService.signIn('kochutyura@gmail.com', '18Kochut').subscribe(res => {
+    this.authService.signIn({email: 'kochutyura@gmail.com', password: '18Kochut'}).subscribe(res => {
       console.log(res)
     });
   }
@@ -74,5 +49,9 @@ export class AppComponent {
     this.angularFireAuth.signOut().then(res => {
       console.log(res)
     });
+  }
+
+  ngOnDestroy() {
+    localStorage.clear();
   }
 }

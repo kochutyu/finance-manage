@@ -1,0 +1,16 @@
+<app-no-login-toolbar></app-no-login-toolbar>
+<div class="main-container row-center col-center">
+  <form class="form" (ngSubmit)="login()" [formGroup]="loginForm">
+    <mat-form-field appearance="fill">
+      <mat-label>{{'email' | translate}}</mat-label>
+      <input formControlName="email" matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>{{'password' | translate}}</mat-label>
+      <input formControlName="password" matInput>
+    </mat-form-field>
+    <button type="submit" mat-raised-button color="primary">
+      {{'login' | translate}}
+    </button>
+  </form>
+</div>

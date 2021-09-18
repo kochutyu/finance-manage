@@ -7,7 +7,7 @@ import {AngularFireModule} from "@angular/fire/compat";
 
 import {environment} from "../environments/environment";
 import {AppRoutingModule} from "./app-routing.module";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from "./core/modules/material.module.ts.module";
@@ -15,6 +15,8 @@ import {FirebaseModule} from "./core/modules/firebase.module";
 import {TranslateModule} from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {LanguageSelectModule} from "./components/language-select/language-select.module";
+import {RouterModule} from "@angular/router";
+import {LoaderInterceptor} from "./core/interseptors/loader.interceptor";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -35,8 +37,11 @@ export function createTranslateLoader(http: HttpClient) {
     FirebaseModule,
     MaterialModule,
     LanguageSelectModule,
+    RouterModule,
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

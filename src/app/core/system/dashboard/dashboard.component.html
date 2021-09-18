@@ -1,0 +1,15 @@
+<app-login-toolbar></app-login-toolbar>
+<mat-tab-group dynamicHeight mat-align-tabs="center" (selectedTabChange)="changeTab($event)">
+  <mat-tab label="{{'dashboard' | translate}}">
+    <app-dashboard-info></app-dashboard-info>
+  </mat-tab>
+  <mat-tab label="{{'manage' | translate}}">
+    <app-dashboard-manage></app-dashboard-manage>
+  </mat-tab>
+  <mat-tab label="{{'history' | translate}}">
+    <app-dashboard-history></app-dashboard-history>
+  </mat-tab>
+  <mat-tab label="{{'wishList' | translate}}">
+    <app-dashboard-wish-list></app-dashboard-wish-list>
+  </mat-tab>
+</mat-tab-group>

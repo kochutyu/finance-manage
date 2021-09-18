@@ -1,21 +1,17 @@
-<button (click)="signIn()">Sign In</button>
-<button (click)="getToken()">Get Token</button>
-<button (click)="logOut()">Log out</button>
+<!--<button (click)="loaderService.show()">Show</button>-->
+<!--<button (click)="loaderService.hide()">Hide</button>-->
+<!--<button (click)="getToken()">Get Token</button>-->
+<!--<button (click)="logOut()">Log out</button>-->
 
 
-<button mat-icon-button *ngFor="let lang of languages"
-        (click)="translateService.use(lang.code)">
-  {{lang.code}}
-</button>
-{{'hello' | translate}}
-
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <span>{{'financeManagement' | translate}}</span>
-    <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <app-language-select></app-language-select>
-  </mat-toolbar-row>
-</mat-toolbar>
+<!--<button mat-icon-button *ngFor="let lang of languages"-->
+<!--        (click)="translateService.use(lang.code)">-->
+<!--  {{lang.code}}-->
+<!--</button>-->
+<!--{{'hello' | translate}}-->
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+<div class="main-loader row-center col-center" *ngIf="isShow">
+  <mat-spinner></mat-spinner>
+</div>

@@ -1,4 +1,20 @@
 {
   "financeManagement": "Finance Management",
-  "hello": "Hello"
+  "hello": "Hello",
+  "password": "Password",
+  "email": "Email",
+  "user": "User",
+  "dashboard": "Dashboard",
+  "balance": "Balance",
+  "manage": "Manage",
+  "history": "History",
+  "UAH": "UAH",
+  "amount": "Amount",
+  "submit": "Submit",
+  "login": "Login",
+  "wishList": "Wish List",
+  "topUpYourAccount": "Top up your account",
+  "makeATransaction": "Make a transaction",
+  "info": "Info",
+  "youBalanceWasUpdated": "Your balance was updated!"
 }

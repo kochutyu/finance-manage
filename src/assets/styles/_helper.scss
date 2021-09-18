@@ -1,0 +1,50 @@
+.space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-container {
+  height: calc(100vh - 64px);
+  overflow: auto;
+}
+
+.row-center {
+  display: flex;
+  justify-content: center;
+}
+
+.col-center {
+  display: flex;
+  align-items: center;
+}
+
+.col-baseline {
+  display: flex;
+  align-items: baseline;
+}
+
+.main-loader {
+  background: rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.content {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0.3em 2em;
+}
+
+.base-mt {
+  margin-top: 2em;
+}
+
+.form {
+  button {
+    max-width: 150px;
+  }
+}

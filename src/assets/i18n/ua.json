@@ -1,4 +1,20 @@
 {
   "financeManagement": "Управління фінансами",
-  "hello": "Привіт"
+  "hello": "Привіт",
+  "password": "Пароль",
+  "email": "Пошта",
+  "user": "Користувач",
+  "dashboard": "Сторінка інформації",
+  "balance": "Баланс",
+  "manage": "Керування",
+  "history": "Історія",
+  "UAH": "Грн.",
+  "amount": "Сума",
+  "submit": "Підтвердити",
+  "login": "Вхід",
+  "wishList": "Список побажань",
+  "topUpYourAccount": "Поповнити рахунок",
+  "makeATransaction": "Зробити транзакцію",
+  "info": "Інформація",
+  "youBalanceWasUpdated": "Ваш баланс було оновлено!"
 }
