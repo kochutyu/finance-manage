@@ -20,9 +20,13 @@ export class AuthComponent implements OnInit {
     private authService: AuthService,
     public loaderService: LoaderService
   ) {
+    // this.loginForm = this.fb.group({
+    //   email: this.fb.control('kochutyura@gmail.com', [Validators.email]),
+    //   password: this.fb.control('18Kochut')
+    // })
     this.loginForm = this.fb.group({
-      email: this.fb.control('kochutyura@gmail.com', [Validators.email]),
-      password: this.fb.control('18Kochut')
+      email: this.fb.control(null, [Validators.email]),
+      password: this.fb.control(null)
     })
   }
 

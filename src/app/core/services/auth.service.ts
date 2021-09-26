@@ -23,7 +23,7 @@ export class AuthService {
   public get email(): string {
     const email = JSON.parse(localStorage.getItem(LocalStorageEnum.USER_EMAIL) || '');
     if (email) {
-      return (email as string).split('@')[0];
+      return (email as string).split('@')[0].replace('.', '-');
     }
     return email;
   }
