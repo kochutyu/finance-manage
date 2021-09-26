@@ -1,0 +1,10 @@
+<input type="file" [accept]="accept" [size]="size" (change)="selectImage($event, inputRef)" class="d-hidden" #inputRef>
+<mat-form-field class="w-100">
+  <ngx-mat-file-input
+    [placeholder]="'chooseImage' | translate"
+    (click)="selectFile($event, inputRef)"
+    [(ngModel)]="image" [multiple]="true"
+    [accept]="accept"
+    color="primary">
+  </ngx-mat-file-input>
+</mat-form-field>

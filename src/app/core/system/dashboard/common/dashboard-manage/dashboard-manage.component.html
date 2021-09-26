@@ -5,12 +5,12 @@
       {{'topUpYourAccount' | translate}}
     </mat-card-title>
 
-    <form class="form form-balance" (ngSubmit)="createBalance()" [formGroup]="createBalanceForm">
+    <form class="form form-balance" (ngSubmit)="createBalance()" [formGroup]="createBalanceForm" autocomplete="off">
       <mat-form-field appearance="fill">
         <mat-label>{{'amount' | translate}}</mat-label>
         <input formControlName="amount" matInput>
       </mat-form-field>
-      <button type="submit" mat-raised-button color="primary">
+      <button type="submit" mat-raised-button color="primary" [disabled]="createBalanceForm.invalid">
         {{'submit' | translate}}
       </button>
     </form>
@@ -21,9 +21,60 @@
 
   <mat-card class="base-mt">
     <mat-card-title>
-      {{'makeATransaction' | translate}}
+      <div class="d-flex space-between">
+        <span>{{'makeATransaction' | translate}}</span>
+        <span>
+          <strong>{{'balance' | translate}}:</strong>
+          {{userBalance}} {{'UAH' | translate}}
+        </span>
+      </div>
     </mat-card-title>
-    <app-in-progress></app-in-progress>
+
+    <form class="form form-balance" (ngSubmit)="createTransaction()" [formGroup]="createTransactionForm" autocomplete="off">
+      <app-budget-select class="w-100" formControlName="budget"></app-budget-select>
+      <div class="form__double">
+        <mat-form-field appearance="fill">
+          <mat-label>{{'amount' | translate}}</mat-label>
+          <input formControlName="amount" matInput>
+        </mat-form-field>
+        <app-percent-select formControlName="percent"></app-percent-select>
+      </div>
+
+      <mat-accordion class="w-100 mat-form-field-wrapper">
+        <mat-expansion-panel [expanded]="true" hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Calculator
+            </mat-panel-title>
+            <mat-panel-description>
+              This is a summary of the calculation
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="calc-total-transaction" *ngIf="calcTransaction">
+            <span class="calc-total-transaction__label">Percent:</span>
+            <span class="">{{calcTransaction.amount}}</span>
+            <span class="calc-total-transaction__symbol">*</span>
+            <span class="">{{calcTransaction.percent}}</span>
+            <span class="calc-total-transaction__symbol">=</span>
+            <span class="">{{calcTransaction.total}}</span>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="calc-total-transaction" *ngIf="calcTransaction">
+            <span class="calc-total-transaction__label">Balance:</span>
+            <span class="">{{calcTransaction.userBalance}}</span>
+            <span class="calc-total-transaction__symbol">-</span>
+            <span class="">{{calcTransaction.total}}</span>
+            <span class="calc-total-transaction__symbol">=</span>
+            <span class="">{{calcTransaction.totalUserBalance}}</span>
+          </div>
+        </mat-expansion-panel>
+
+      </mat-accordion>
+
+      <button type="submit" mat-raised-button color="primary" [disabled]="createTransactionForm.invalid || calcTransaction && calcTransaction.totalUserBalance <= 0">
+        {{'submit' | translate}}
+      </button>
+    </form>
   </mat-card>
 
 </main>

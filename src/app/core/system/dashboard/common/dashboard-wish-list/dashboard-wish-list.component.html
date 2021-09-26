@@ -1,3 +1,17 @@
 <main class="content">
-  <app-in-progress></app-in-progress>
+  <mat-divider></mat-divider>
+
+  <div class="controls">
+    <button mat-mini-fab color="accent" (click)="openLink()" aria-label="Example icon button with a menu icon">
+      <mat-icon>view_headline</mat-icon>
+    </button>
+  </div>
+
+  <mat-divider></mat-divider>
+
+
+  <div class="budget-list">
+    <app-budget-card *ngFor="let budget of budgets" [budget]="budget"></app-budget-card>
+  </div>
+
 </main>

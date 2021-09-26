@@ -6,3 +6,27 @@
     margin: 0 auto;
   }
 }
+
+.calc-total-transaction {
+  padding: 1em 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  span {
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__label {
+    font-size: 20px !important;
+    justify-content: unset;
+    color: #a71cff;
+  }
+  &__symbol {
+    color: #a0a8a8;
+  }
+}
+
+.mat-expansion-panel-header-description {
+  flex-grow: unset !important;
+}

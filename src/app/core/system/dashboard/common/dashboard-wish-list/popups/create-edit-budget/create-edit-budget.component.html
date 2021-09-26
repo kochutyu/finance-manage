@@ -1,0 +1,19 @@
+<app-confirm-popup-wrapper
+  (handleSubmit)="createBudget()"
+  (handleCancel)="dialogRef.close()"
+  [disableSubmitBtn]="createBudgetForm.invalid"
+  submitBtnName="{{data ? 'edit' : 'create'}}"
+>
+  <ng-container header>{{'create' | translate}}</ng-container>
+  <form content (ngSubmit)="createBudget()" [formGroup]="createBudgetForm" class="d-flex column" autocomplete="off">
+    <mat-form-field appearance="fill">
+      <mat-label>{{'budgetName' | translate}}</mat-label>
+      <input formControlName="name" matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>{{'amount' | translate}}</mat-label>
+      <input formControlName="amountGoal" matInput>
+    </mat-form-field>
+    <app-drag-and-drop-image formControlName="imageUrl"></app-drag-and-drop-image>
+  </form>
+</app-confirm-popup-wrapper>

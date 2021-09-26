@@ -1,3 +1,43 @@
 <main class="content">
-  <app-in-progress></app-in-progress>
+
+  <!--  <mat-list role="list" class="list">-->
+  <!--    <mat-list-item class="list__item" role="listitem">-->
+  <!--      <mat-icon mat-list-icon>paid</mat-icon>-->
+
+  <!--    </mat-list-item>-->
+  <!--  </mat-list>-->
+
+  <mat-card *ngFor="let transaction of transactions">
+    <mat-card-content>
+      <mat-list role="list" class="list">
+        <mat-list-item class="list__item" role="listitem">
+          <mat-icon mat-list-icon>paid</mat-icon>
+          <div mat-line>
+            <div class="list__grid">
+              <div class="list__grid-item title">{{'transactionType' | translate}}</div>
+              <div class="list__grid-item title">{{'amount' | translate}}</div>
+              <div class="list__grid-item title">{{'createdAt' | translate}}</div>
+              <div class="list__grid-item title">{{'userBalance' | translate}}</div>
+              <div class="list__grid-item title">{{'budgetBalance' | translate}}</div>
+              <div class="list__grid-item">
+                {{transaction.type | translate}}
+              </div>
+              <div class="list__grid-item">
+                {{transaction.amount | currency: transaction.currencyCode: 'symbol-narrow'}}
+              </div>
+              <div class="list__grid-item">
+                {{transaction.createdAt | date: 'M/d/yy, HH:mm'}}
+              </div>
+              <div class="list__grid-item">
+                {{(transaction?.user?.balance || 0) | currency: (transaction?.user?.currencyCode || 'UAH'): 'symbol-narrow'}}
+              </div>
+              <div class="list__grid-item">
+                {{(transaction?.budget?.balance || 0) | currency: (transaction?.budget?.currencyCode || 'UAH'): 'symbol-narrow'}}
+              </div>
+            </div>
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
 </main>

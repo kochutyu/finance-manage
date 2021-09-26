@@ -3,6 +3,7 @@ import {HttpService} from "../../../../services/http.service";
 import {DashboardInfoModel} from "./dashboard-info.model";
 import {AuthService} from "../../../../services/auth.service";
 import {DashboardActionService} from "../../services/dashboard-action.service";
+import {FormControl, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-dashboard-info',
@@ -10,7 +11,6 @@ import {DashboardActionService} from "../../services/dashboard-action.service";
   styleUrls: ['./dashboard-info.component.scss']
 })
 export class DashboardInfoComponent implements OnInit {
-
   public dashboard: DashboardInfoModel;
 
   constructor(
@@ -26,7 +26,7 @@ export class DashboardInfoComponent implements OnInit {
     this.getDashboardInfo();
     this.dashboardActionService.handleChangeTab$().subscribe(tab => {
       this.getDashboardInfo();
-    })
+    });
   }
 
   private getDashboardInfo(): void {

@@ -1,0 +1,35 @@
+mat-card {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.list {
+  &__item {
+    display: block;
+    width: 100%;
+
+    mat-card {
+      display: block;
+      width: 100%;
+    }
+
+    mat-card-content {
+      display: block;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    gap: 0.5em;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+    &-item {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      &.title {
+        color: #a0a8a8;
+      }
+    }
+  }
+}

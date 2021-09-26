@@ -1,0 +1,34 @@
+<mat-card>
+  <mat-card-title>
+    <span>{{budget.name}}</span>
+
+  </mat-card-title>
+  <img mat-card-image [src]="budget.imageUrl" alt="budget img">
+
+  <mat-card-content>
+    <mat-list role="list">
+      <mat-list-item role="listitem">
+        <mat-icon mat-list-icon>payment</mat-icon>
+        <div mat-line>{{'balance' | translate}}</div>
+        <div mat-line>{{(budget.balance || 0) | currency: (budget.currencyCode || 'UAH'): 'symbol-narrow'}}</div>
+      </mat-list-item>
+    </mat-list>
+
+    <mat-list role="list">
+      <mat-list-item role="listitem">
+        <mat-icon mat-list-icon>check_circle_outline</mat-icon>
+        <div mat-line>{{'goal' | translate}}</div>
+        <div mat-line>{{(budget.amountGoal || 0) | currency: (budget.currencyCode || 'UAH'): 'symbol-narrow'}}</div>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-mini-fab mat-button (click)="delete()" color="primary">
+      <mat-icon>delete</mat-icon>
+    </button>
+    <button mat-mini-fab mat-button (click)="edit()" color="primary">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

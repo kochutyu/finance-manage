@@ -12,6 +12,10 @@ import {MatTabsModule} from "@angular/material/tabs";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatCardModule} from "@angular/material/card";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatListModule} from "@angular/material/list";
+import {MatExpansionModule} from "@angular/material/expansion";
 
 const modules = [
   MatToolbarModule,
@@ -27,12 +31,18 @@ const modules = [
   MatTabsModule,
   MatDividerModule,
   MatCardModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatBottomSheetModule,
+  MatIconModule,
+  MatDialogModule,
+  MatListModule,
+  MatExpansionModule
 ];
 
 @NgModule({
   imports: modules,
-  exports: modules
+  exports: modules,
+  providers: []
 })
 export class MaterialModule {
 }

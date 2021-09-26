@@ -10,6 +10,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-material-components/file-input": "^6.0.0",
     "@angular/animations": "~12.0.5",
     "@angular/cdk": "^12.2.6",
     "@angular/common": "~12.0.5",
@@ -24,6 +25,8 @@
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
     "firebase": "^9.0.2",
+    "ngx-file-drop": "^11.2.0",
+    "ngx-image-cropper": "^4.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.1.0",
     "zone.js": "~0.11.4"

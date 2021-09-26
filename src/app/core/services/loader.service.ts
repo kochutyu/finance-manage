@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable, Subject} from "rxjs";
-import {tap} from "rxjs/operators";
+import {distinctUntilChanged, tap} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +18,8 @@ export class LoaderService {
   }
 
   public detect$(): Observable<boolean> {
-    return this.loading$.asObservable();
+    return this.loading$.asObservable().pipe(
+      distinctUntilChanged()
+    );
   }
 }

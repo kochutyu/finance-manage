@@ -1,0 +1,8 @@
+<mat-form-field appearance="fill" class="w-100">
+  <mat-label>Percent</mat-label>
+  <mat-select [formControl]="control">
+    <mat-option *ngFor="let percent of percents" [value]="percent">
+     {{percent}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

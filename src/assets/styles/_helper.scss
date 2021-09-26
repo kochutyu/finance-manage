@@ -1,3 +1,32 @@
+body {
+  background: #e9e9e9;
+}
+
+.d-hidden {
+  display: none;
+}
+
+.d-flex {
+  display: flex;
+
+  &.column {
+    flex-direction: column;
+  }
+
+  &.space-between {
+    justify-content: space-between;
+  }
+}
+
+.w-100 {
+  display: block;
+  width: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+
 .space-between {
   display: flex;
   justify-content: space-between;
@@ -46,5 +75,33 @@
 .form {
   button {
     max-width: 150px;
+  }
+
+  &__double {
+    display: grid;
+    gap: 0.5em;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.popup-container {
+  position: relative;
+
+  &__header {
+  }
+
+  &__content {
+    margin: 1em auto;
+    max-width: 90%;
+    max-height: 80vh;
+    overflow: auto;
+  }
+
+  &__footer {
+    &.btn-double {
+      button {
+        margin: 0 10px;
+      }
+    }
   }
 }

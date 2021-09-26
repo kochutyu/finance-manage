@@ -1,0 +1,11 @@
+<mat-form-field appearance="fill" class="w-100">
+  <mat-label>Budget</mat-label>
+  <mat-select [formControl]="control">
+    <mat-option *ngFor="let budget of budgets" [value]="budget">
+      <div class="select-item">
+        <span>{{budget.name}}</span>
+        <img [src]="budget.imageUrl" alt="">
+      </div>
+    </mat-option>
+  </mat-select>
+</mat-form-field>

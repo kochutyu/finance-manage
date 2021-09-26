@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { DashboardInfoComponent } from './dashboard-info.component';
 import {TranslateModule} from "@ngx-translate/core";
 import {MaterialModule} from "../../../../modules/material.module.ts.module";
+import {DragAndDropImageModule} from "../../../../../components/form/drag-and-drop-image/drag-and-drop-image.module";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -16,7 +18,9 @@ import {MaterialModule} from "../../../../modules/material.module.ts.module";
   imports: [
     CommonModule,
     TranslateModule,
-    MaterialModule
+    MaterialModule,
+    DragAndDropImageModule,
+    ReactiveFormsModule
   ]
 })
 export class DashboardInfoModule { }

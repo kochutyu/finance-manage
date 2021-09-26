@@ -1,0 +1,19 @@
+<app-confirm-popup-wrapper
+  [isPopup]="isPopup"
+  (handleSubmit)="save()"
+  (handleCancel)="close({})"
+  submitBtnName="save"
+>
+  <ng-container header>
+    Drop And Drag The Image
+  </ng-container>
+  <div class="drag-and-drop-container" content>
+    <image-cropper
+      (imageCropped)="imageCropped($event)"
+      [aspectRatio]="data.aspectRatio"
+      [imageChangedEvent]="data.inputEvent"
+      [maintainAspectRatio]="true"
+      format="png"
+    ></image-cropper>
+  </div>
+</app-confirm-popup-wrapper>

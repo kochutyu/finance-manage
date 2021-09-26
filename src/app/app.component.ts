@@ -1,54 +1,35 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
-import {HttpService} from "./core/services/http.service";
-import {AngularFireAuth} from "@angular/fire/compat/auth";
-import {AuthService} from "./core/services/auth.service";
-import {TranslateService} from "@ngx-translate/core";
-import {environment} from "../environments/environment";
+import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
 import {LoaderService} from "./core/services/loader.service";
 import {Router} from "@angular/router";
+import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {LoaderComponent} from "./components/loader/loader.component";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnDestroy {
-  languages = environment.languages;
-  isShow = true;
+  loader: MatDialogRef<LoaderComponent> | null = null;
 
   constructor(
     public loaderService: LoaderService,
-    private httpService: HttpService,
-    private angularFireAuth: AngularFireAuth,
-    public authService: AuthService,
-    public translateService: TranslateService,
     private router: Router,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private dialog: MatDialog
   ) {
     this.loaderService.detect$().subscribe(isShow => {
-      this.isShow = isShow;
-      this.cdr.markForCheck();
+      console.log(isShow)
+      if (!isShow && this.loader) {
+        this.loaderService.hide();
+        this.loader?.close();
+        this.loader = null;
+      }
+      if (isShow) {
+        this.loader = this.dialog.open(LoaderComponent);
+      }
     });
     this.router.navigateByUrl('/dashboard');
-  }
-
-  signIn() {
-    this.authService.signIn({email: 'kochutyura@gmail.com', password: '18Kochut'}).subscribe(res => {
-      console.log(res)
-    });
-  }
-
-  getToken() {
-    this.authService.getTokenInfo().subscribe(res => {
-      console.log(res)
-    })
-  }
-
-  logOut() {
-    this.angularFireAuth.signOut().then(res => {
-      console.log(res)
-    });
   }
 
   ngOnDestroy() {
